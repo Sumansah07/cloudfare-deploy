@@ -9,18 +9,19 @@ import { db } from '~/lib/database/supabase.server';
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 if (!stripeSecretKey) {
-  throw new Error('Missing STRIPE_SECRET_KEY environment variable');
+  console.warn('⚠️ STRIPE_SECRET_KEY not configured - billing features will be disabled');
 }
 
-const stripe = new Stripe(stripeSecretKey, {
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, {
   apiVersion: '2024-12-18.acacia',
-});
+}) : null;
 
 export class BillingService {
   /**
    * Create a new Stripe customer
    */
   async createCustomer(email: string, clerkUserId: string, name?: string): Promise<Stripe.Customer> {
+    if (!stripe) throw new Error('Stripe not configured');
     return stripe.customers.create({
       email,
       name,
