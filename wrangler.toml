@@ -1,7 +1,13 @@
 name = "bolt-ai"
+main = "worker.js"
 compatibility_date = "2024-11-20"
-pages_build_output_dir = "./build/client"
 compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = "./build/client"
+
+[build]
+command = "npm run build && npx esbuild worker.ts --bundle --outfile=worker.js --format=esm --platform=neutral --target=esnext --external:__STATIC_CONTENT_MANIFEST"
 
 [vars]
 NODE_ENV = "production"
