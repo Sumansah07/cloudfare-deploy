@@ -7,3 +7,14 @@ declare module '@remix-run/cloudflare' {
     cloudflare: Cloudflare;
   }
 }
+
+type GetLoadContext = (args: {
+  request: Request;
+  context: { cloudflare: Cloudflare };
+}) => AppLoadContext;
+
+export const getLoadContext: GetLoadContext = ({ context }) => {
+  return {
+    ...context,
+  };
+};

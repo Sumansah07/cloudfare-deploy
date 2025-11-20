@@ -3,8 +3,8 @@
  * Manages chat sessions for projects
  */
 
-import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { db } from '~/lib/database/supabase.server';
 

@@ -2,8 +2,8 @@
  * API Route: Create Stripe billing portal session
  */
 
-import type { ActionFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { ActionFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { billing } from '~/lib/billing/stripe.server';
 

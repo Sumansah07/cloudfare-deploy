@@ -3,7 +3,7 @@
  * Returns current usage statistics for authenticated user
  */
 
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { UsageGuard } from '~/lib/billing/usage-guard.server';
 

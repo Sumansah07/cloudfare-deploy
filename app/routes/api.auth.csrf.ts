@@ -2,8 +2,8 @@
  * CSRF token API route
  */
 
-import type { LoaderFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { generateCSRFToken, setCSRFTokenHeader } from '~/lib/auth/cookies.server';
 
 export async function loader({ request }: LoaderFunctionArgs) {

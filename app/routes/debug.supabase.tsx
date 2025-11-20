@@ -3,7 +3,7 @@
  * Tests the Supabase connection and database schema
  */
 
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { db } from '~/lib/database/supabase.server';
 

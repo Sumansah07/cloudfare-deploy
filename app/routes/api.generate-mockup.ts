@@ -3,8 +3,8 @@
  * Integrates with n8n workflow for intelligent design generation
  */
 
-import type { ActionFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { ActionFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 
 interface MockupRequest {
   prompt: string;

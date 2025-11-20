@@ -2,8 +2,8 @@
  * Authentication middleware for server-side route protection
  */
 
-import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/node';
-import { redirect } from '@remix-run/node';
+import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/cloudflare';
+import { redirect } from '@remix-run/cloudflare';
 import { authService } from './auth.server';
 import type { PublicUser } from './types';
 

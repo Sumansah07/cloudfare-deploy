@@ -3,8 +3,8 @@
  * User account and application settings
  */
 
-import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { useUser, useClerk } from '@clerk/remix';
 import { useState } from 'react';

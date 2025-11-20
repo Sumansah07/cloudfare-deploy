@@ -3,7 +3,7 @@
  * Manually increment usage counters
  */
 
-import { json, type ActionFunctionArgs } from '@remix-run/node';
+import { json, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { db } from '~/lib/database/supabase.server';
 
 export async function action({ request }: ActionFunctionArgs) {

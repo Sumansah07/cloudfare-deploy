@@ -3,7 +3,7 @@
  * Helps debug why users aren't being synced to Supabase
  */
 
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { useLoaderData, Form } from '@remix-run/react';
 import { useUser } from '@clerk/remix';
 import { getOptionalAuth, getAuthenticatedUser } from '~/lib/auth/clerk.server';

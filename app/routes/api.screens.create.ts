@@ -3,7 +3,7 @@
  * Increments user's screen count for usage tracking
  */
 
-import { json, type ActionFunctionArgs } from '@remix-run/node';
+import { json, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { getAuth } from '@clerk/remix/ssr.server';
 import { db } from '~/lib/database/supabase.server';
 

@@ -1,7 +1,7 @@
 /**
  * Cookie management utilities for authentication
  */
-import { createCookie } from '@remix-run/node';
+import { createCookie } from '@remix-run/cloudflare';
 import type { SessionData } from './types';
 
 // Session cookie configuration

@@ -3,8 +3,8 @@
  * Returns current usage limits and statistics for the authenticated user
  */
 
-import type { LoaderFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { checkUsageLimits } from '~/lib/auth/clerk.server';
 
 export async function loader(args: LoaderFunctionArgs) {

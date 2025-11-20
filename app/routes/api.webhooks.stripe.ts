@@ -3,8 +3,8 @@
  * Handles payment and subscription events
  */
 
-import type { ActionFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { ActionFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import Stripe from 'stripe';
 import { db } from '~/lib/database/supabase.server';
 

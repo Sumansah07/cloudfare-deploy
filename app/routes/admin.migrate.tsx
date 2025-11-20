@@ -3,7 +3,7 @@
  * Applies pending migrations to Supabase database
  */
 
-import { json, type LoaderFunctionArgs, type ActionFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { useLoaderData, Form, useActionData } from '@remix-run/react';
 import { db } from '~/lib/database/supabase.server';
 

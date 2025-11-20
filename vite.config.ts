@@ -1,25 +1,18 @@
-import { vitePlugin as remixVitePlugin } from '@remix-run/dev';
-import { vercelPreset } from '@vercel/remix/vite';
+import { vitePlugin as remixVitePlugin, cloudflareDevProxyVitePlugin } from '@remix-run/dev';
 import UnoCSS from 'unocss/vite';
 import { defineConfig, type ViteDevServer } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import * as dotenv from 'dotenv';
-
-// Load environment variables from multiple files
-dotenv.config({ path: '.env.local' });
-dotenv.config({ path: '.env' });
-dotenv.config();
+import { getLoadContext } from './load-context';
 
 export default defineConfig((config) => {
   return {
     optimizeDeps: {
       include: ['react-dom/server', 'scheduler'],
-      exclude: ['@remix-run/web-fetch', '@remix-run/node'],
+      exclude: ['@remix-run/web-fetch'],
     },
     ssr: {
       external: [
         '@remix-run/web-fetch',
-        '@remix-run/node',
         'crypto', 'url', 'stream', 'util', 'zlib', 'path', 'module', 'fs', 'os', 'http', 'https', 'buffer', 'events', 'assert', 'child_process',
         'node:crypto', 'node:url', 'node:stream', 'node:util', 'node:zlib', 'node:path', 'node:module', 'node:fs', 'node:os', 'node:http', 'node:https', 'node:buffer', 'node:events', 'node:assert', 'node:child_process'
       ],
@@ -59,8 +52,10 @@ export default defineConfig((config) => {
       },
     },
     plugins: [
+      cloudflareDevProxyVitePlugin({
+        getLoadContext,
+      }),
       remixVitePlugin({
-        presets: [vercelPreset()],
         future: {
           v3_fetcherPersist: true,
           v3_relativeSplatPath: true,

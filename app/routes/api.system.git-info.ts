@@ -1,4 +1,5 @@
-import { json, type LoaderFunction, type LoaderFunctionArgs } from '@remix-run/node';
+import { json } from '@remix-run/cloudflare';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
 
 interface GitInfo {
   local: {
@@ -56,12 +57,7 @@ declare const __GIT_EMAIL: string;
 declare const __GIT_REMOTE_URL: string;
 declare const __GIT_REPO_NAME: string;
 
-/*
- * Remove unused variable to fix linter error
- * declare const __GIT_REPO_URL: string;
- */
-
-export const loader: LoaderFunction = async ({ request, context }: LoaderFunctionArgs & { context: AppContext }) => {
+export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   console.log('Git info API called with URL:', request.url);
 
   // Handle CORS preflight requests
@@ -80,9 +76,16 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
 
   console.log('Git info action:', action);
 
+  // Cloudflare Workers specific implementation
+  // We can't access process.env, so we rely on context.env
+  // Also we can't use child_process, so we rely on build-time constants
+
   if (action === 'getUser' || action === 'getRepos' || action === 'getOrgs' || action === 'getActivity') {
     // Use server-side token instead of client-side token
-    const serverGithubToken = process.env.GITHUB_ACCESS_TOKEN || context.env?.GITHUB_ACCESS_TOKEN;
+    // In Cloudflare Workers, env vars are in context.env (or context.cloudflare.env)
+    const env = (context as any).cloudflare?.env || (context as any).env || {};
+    const serverGithubToken = env.GITHUB_ACCESS_TOKEN;
+
     const cookieToken = request.headers
       .get('Cookie')
       ?.split(';')
@@ -120,6 +123,7 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
           headers: {
             Accept: 'application/vnd.github.v3+json',
             Authorization: `Bearer ${token}`,
+            'User-Agent': 'Bolt-AI-Worker'
           },
         });
 
@@ -146,6 +150,7 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
           headers: {
             Accept: 'application/vnd.github.v3+json',
             Authorization: `Bearer ${token}`,
+            'User-Agent': 'Bolt-AI-Worker'
           },
         });
 
@@ -161,6 +166,7 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
           headers: {
             Accept: 'application/vnd.github.v3+json',
             Authorization: `Bearer ${token}`,
+            'User-Agent': 'Bolt-AI-Worker'
           },
         });
 
@@ -178,31 +184,6 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
           if (repo.language && repo.language !== 'null') {
             languageStats[repo.language] = (languageStats[repo.language] || 0) + 1;
           }
-
-          /*
-           * Optionally fetch languages for each repo for more accurate stats
-           * This is commented out to avoid rate limiting
-           *
-           * if (repo.languages_url) {
-           *   try {
-           *     const langResponse = await fetch(repo.languages_url, {
-           *       headers: {
-           *         Accept: 'application/vnd.github.v3+json',
-           *         Authorization: `Bearer ${token}`,
-           *       },
-           *     });
-           *
-           *     if (langResponse.ok) {
-           *       const languages = await langResponse.json();
-           *       Object.keys(languages).forEach(lang => {
-           *         languageStats[lang] = (languageStats[lang] || 0) + languages[lang];
-           *       });
-           *     }
-           *   } catch (error) {
-           *     console.error(`Error fetching languages for ${repo.name}:`, error);
-           *   }
-           * }
-           */
         }
 
         return json(
@@ -229,6 +210,7 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
           headers: {
             Accept: 'application/vnd.github.v3+json',
             Authorization: `Bearer ${token}`,
+            'User-Agent': 'Bolt-AI-Worker'
           },
         });
 
@@ -275,6 +257,7 @@ export const loader: LoaderFunction = async ({ request, context }: LoaderFunctio
           headers: {
             Accept: 'application/vnd.github.v3+json',
             Authorization: `Bearer ${token}`,
+            'User-Agent': 'Bolt-AI-Worker'
           },
         });
 

@@ -4,7 +4,7 @@
  */
 
 import { SignIn } from '@clerk/remix';
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/cloudflare';
 import BackgroundRays from '~/components/ui/BackgroundRays.tsx';
 
 export const meta: MetaFunction = () => {

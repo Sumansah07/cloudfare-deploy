@@ -3,7 +3,7 @@
  * Prevents users from exceeding their tier limits
  */
 
-import { json } from '@remix-run/node';
+import { json } from '@remix-run/cloudflare';
 import { billing } from './stripe.server';
 
 export class UsageGuard {

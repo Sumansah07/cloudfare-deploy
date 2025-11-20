@@ -2,8 +2,8 @@
  * Dashboard route - protected page for authenticated users using Clerk
  */
 
-import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { useUser, useClerk } from '@clerk/remix';
 import { useAuthContext } from '~/lib/auth/auth-provider';

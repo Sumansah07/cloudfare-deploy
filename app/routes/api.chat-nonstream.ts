@@ -1,4 +1,4 @@
-import { type ActionFunctionArgs } from '@remix-run/node';
+import { type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { generateId } from 'ai';
 import type { Message } from 'ai';
 import { FALLBACK_CHAIN, getDefaultModel, getNextFallback, shouldRetry } from '~/lib/.server/llm/model-fallback';

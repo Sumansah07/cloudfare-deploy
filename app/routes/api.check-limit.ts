@@ -3,7 +3,7 @@
  * Validates if user can perform action based on subscription tier
  */
 
-import { json, type ActionFunctionArgs } from '@remix-run/node';
+import { json, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { UsageGuard } from '~/lib/billing/usage-guard.server';
 

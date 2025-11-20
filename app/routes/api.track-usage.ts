@@ -3,7 +3,7 @@
  * Called from client after AI generation completes
  */
 
-import { json, type ActionFunctionArgs } from '@remix-run/node';
+import { json, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { requireAuth } from '~/lib/auth/clerk.server';
 import { db } from '~/lib/database/supabase.server';
 

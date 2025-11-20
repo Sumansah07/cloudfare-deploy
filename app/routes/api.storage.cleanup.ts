@@ -3,8 +3,8 @@
  * Removes unused files and optimizes storage
  */
 
-import type { ActionFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { ActionFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { db } from '~/lib/database/supabase.server';
 

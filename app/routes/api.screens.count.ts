@@ -2,7 +2,7 @@
  * API endpoint to get user's screen count
  */
 
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { getAuth } from '@clerk/remix/ssr.server';
 import { db } from '~/lib/database/supabase.server';
 

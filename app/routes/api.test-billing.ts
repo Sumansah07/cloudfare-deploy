@@ -3,7 +3,7 @@
  * Remove this file in production
  */
 
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { db } from '~/lib/database/supabase.server';
 
 export async function loader({ request }: LoaderFunctionArgs) {

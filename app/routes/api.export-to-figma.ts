@@ -1,4 +1,4 @@
-import { type ActionFunctionArgs, json } from '@remix-run/node';
+import { type ActionFunctionArgs, json } from '@remix-run/cloudflare';
 import { createScopedLogger } from '~/utils/logger';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { db } from '~/lib/database/supabase.server';

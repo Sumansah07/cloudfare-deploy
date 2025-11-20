@@ -3,8 +3,8 @@
  * Loads all project-specific data: chat history, files, designs, screens
  */
 
-import type { LoaderFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 import { supabasePersistence } from '~/lib/services/supabase-persistence';
 

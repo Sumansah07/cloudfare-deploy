@@ -3,7 +3,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { createCookieSessionStorage, redirect } from '@remix-run/node';
+import { createCookieSessionStorage, redirect } from '@remix-run/cloudflare';
 import type { PublicUser } from './types';
 
 // Initialize Supabase client

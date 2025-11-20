@@ -3,8 +3,8 @@
  * Creates a Stripe checkout session for subscription upgrades
  */
 
-import type { ActionFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
+import type { ActionFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import Stripe from 'stripe';
 import { getAuthenticatedUser } from '~/lib/auth/clerk.server';
 

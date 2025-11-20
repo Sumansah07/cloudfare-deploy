@@ -5,7 +5,7 @@
 
 import { createClerkClient } from '@clerk/remix/api.server';
 import { getAuth } from '@clerk/remix/ssr.server';
-import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/node';
+import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/cloudflare';
 import { db } from '~/lib/database/supabase.server';
 
 // Server-side environment variables (accessible in server context)

@@ -3,7 +3,7 @@
  * Simple setup for creating the users table
  */
 
-import { json, type ActionFunctionArgs } from '@remix-run/node';
+import { json, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { Form, useActionData } from '@remix-run/react';
 import { db } from '~/lib/database/supabase.server';
 

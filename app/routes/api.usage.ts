@@ -3,7 +3,7 @@
  * Returns user usage statistics for billing and analytics
  */
 
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { getUserUsage, calculateUserCost } = await import('~/lib/services/usage-analytics.server');
